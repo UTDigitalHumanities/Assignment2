@@ -1,0 +1,174 @@
+---
+title: "Problem Set 2"
+output: html_notebook
+---
+
+This problem set covers concepts from chapters 2.2-2.5 in *Humanities Data in R*, including:
+
+* Character Vectors
+* Data Frames
+* Matrices
+* I/O
+* Advanced Subsetting
+
+As well as these concepts not covered in the book:
+
+* For loops
+* If statements
+
+# Writing Code
+For each of the following questions, write the code you need to solve the problem in the provided code block. Running each code block should result in a returned value-- either the result of a calcuation, or the printing of a variable. 
+
+For example, rather than writing:
+```{r}
+x <- 1
+```
+you should write:
+```{r}
+x <- 1
+x
+```
+Notice the difference between running these two code blocks.
+
+Before submitting, be sure to run your code to make sure it is correct!
+
+### Problems
+1. Create a character vector called `rainbow` containing the names of six colors.
+```{r}
+
+```
+
+2. Return the class of the vector `rainbow`.
+```{r}
+
+```
+
+3. Return each color followed by the word "socks," separated by a space (i.e. "red socks").
+```{r}
+
+```
+
+4. Return the first letter of each color.
+```{r}
+
+```
+
+5. Create a vector with the full name of each of the days of the week, then use it to return the three-letter abbreviation of each.
+```{r}
+
+```
+
+6. Use `grep` to find the index of each day that contains a capital "T". If you want to try something harder, use a regular expression (`?regexp`) to find the index of every day containing either a capital or lowercase "T".
+```{r}
+
+```
+
+7. Make the code below function by casting the character vector as a numeric one.
+```{r}
+numbers <- c("1", "2", "3")
+sum(numbers)
+```
+
+
+#### NYT Best Sellers List
+The data in this section is taken from the New York Times Best Sellers combined print & e-book fiction list from the week of January 18, 2020. You can see where this data was drawn from online [here](https://www.nytimes.com/books/best-sellers/2020/01/19/combined-print-and-e-book-fiction/). There are fifteen books on the list. The csv has the following for each book: its number on the list; the title; the author; the number of weeks it has been on the list; and whether it has moved up, down, or not at all since last week.
+
+8. Check your working directory, and set it to the assignment folder (if it is not already!). Then return the contents of the folder using `dir`.
+```{r}
+
+```
+
+9. Load the file `nyt-best-sellers-jan-18.csv` into a data frame called `books`.
+```{r}
+
+```
+
+10. Return the column names of `books`
+```{r}
+
+```
+
+11. Find the average number of weeks on the list. Use data frame subsetting to select the appropriate column, and use `length()` to get the number of entries (don't hard-code in 15).
+```{r}
+
+```
+
+12. Return the class of the `Movement` column.
+```{r}
+
+```
+
+
+13. Notice in the Movement column that "Up" varies in its capitalization. Replace all instances of "up" with "Up" This might be tricky-- think "find and replace"! How do you find every instance of something? Then, how do you replace things?
+```{r}
+
+
+```
+
+
+14. Now that we've normalized our values, we're going to modify this dataframe to make the Movement data more operation-friendly. Instead of one column with the words "up", "down", and "none", we want two columns with logical values: one for whether a book moved up, and one for whether a book moved down. 
+
+a. Create a new column in `books` called "MovedUp" that contains logical values (i.e. TRUE and FALSE) stating whether the book moved up that week.
+```{r}
+
+```
+
+b. Do the same for "MovedDown".
+```{r}
+
+```
+
+c. Remove the Movement column
+```{r}
+
+```
+
+15. For whichever book you please, use the dataframe to print a sentence like "Book Title by Author Name has been on the best sellers list for Number weeks. It is currently number X."
+```{r}
+
+```
+
+16. Return the subset of `books` that have moved up this week. 
+```{r}
+
+```
+
+17. Complete the following code to print the title and author of each book that has moved up this week. For each book, print something like "Title by Author"
+```{r}
+print("Books moving up:")
+for( ){
+  if( ){
+    print(paste( ))
+  }
+}
+
+```
+
+18. Print a string like "Title by Author stayed at number X" for every book that *was* on the list last week but did *not* move. As a sanity check: you should get 5 results.
+```{r}
+
+
+```
+
+19. Save the changes you've made to the data. Write `books` to a file called "nyt-list-modified.csv". Since we already have a Number column, add `row.names=FALSE` as an additional parameter (after the filename in your code) to stop R from adding another column of row numbers. Submit this file along with your R notebook.
+```{r}
+
+```
+
+
+# Explaining Code
+For each of the following questions, explain what's happening in the code provided *without* adding anything to the code. Answer all parts of the question.
+
+20. Why does this return an error?
+```
+"1" + "2"
+```
+
+21. Write the following code in English. That is, how would you read this code out loud if you were explaining what it does?
+```
+names <-  c("Asa", "Lena", "Mia", "Daniel", "Zahara")
+names <-  sort(names)
+for(i in 1:length(names)){
+  print(substr(names[i], start=1, stop = 1))
+}
+```
